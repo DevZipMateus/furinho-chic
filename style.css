@@ -559,7 +559,12 @@ ul { list-style: none; }
 
 
 /* ===== SERVIÇOS ===== */
-.servicos-section { background: var(--creme); }
+.servicos-section {
+  background:
+    linear-gradient(rgba(245,240,232,0.93), rgba(245,240,232,0.93)),
+    url('images/midia_2.jpg') center / cover no-repeat;
+  background-attachment: scroll, fixed;
+}
 
 .servicos-grid {
   display: grid;
@@ -712,7 +717,12 @@ ul { list-style: none; }
 
 
 /* ===== DEPOIMENTOS ===== */
-.depoimentos-section { background: var(--creme); }
+.depoimentos-section {
+  background:
+    linear-gradient(rgba(245,240,232,0.93), rgba(245,240,232,0.93)),
+    url('images/midia_1.jpg') center / cover no-repeat;
+  background-attachment: scroll, fixed;
+}
 
 .depoimentos-grid {
   display: grid;
@@ -772,7 +782,12 @@ ul { list-style: none; }
 
 
 /* ===== CONTATO ===== */
-.contato-section { background: var(--branco); }
+.contato-section {
+  background:
+    linear-gradient(rgba(255,255,255,0.93), rgba(255,255,255,0.93)),
+    url('images/midia_3.jpg') center / cover no-repeat;
+  background-attachment: scroll, fixed;
+}
 
 .contato-grid {
   display: grid;
@@ -1002,7 +1017,10 @@ ul { list-style: none; }
 
 /* ── Tablet landscape ≤ 1023px ── */
 @media (max-width: 1023px) {
-  .sobre-section { background-attachment: scroll, scroll; }
+  .sobre-section,
+  .servicos-section,
+  .depoimentos-section,
+  .contato-section { background-attachment: scroll, scroll; }
   :root { --header-height: 70px; }
   .section { padding: 80px 0; }
   .section-header { margin-bottom: 48px; }
