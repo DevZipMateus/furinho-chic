@@ -149,7 +149,29 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 
-// ── 9. CARROSSEL DE DEPOIMENTOS ─────────────────
+// ── 9. AUTO-ALTURA IFRAME VITRINE ───────────────
+(function () {
+  const iframes = document.querySelectorAll(
+    '.vitrine-iframe-wrapper iframe, .vitrine-page-frame'
+  );
+  iframes.forEach(function (iframe) {
+    iframe.addEventListener('load', function () {
+      try {
+        const doc = this.contentDocument || this.contentWindow.document;
+        const h = Math.max(
+          doc.body.scrollHeight,
+          doc.documentElement.scrollHeight
+        );
+        if (h > 200) this.style.height = h + 'px';
+      } catch (e) {
+        /* cross-origin: mantém altura do CSS */
+      }
+    });
+  });
+})();
+
+
+// ── 10. CARROSSEL DE DEPOIMENTOS ─────────────────
 (function () {
   const carrossel = document.getElementById('depoCarrossel');
   if (!carrossel) return;
