@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demonstração de Vitrine — Furinho Chic</title>
+  <meta name="description" content="Vitrine online Furinho Chic — conheça nossos piercings e joias disponíveis.">
+
+  <link rel="icon" type="image/png" href="images/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      height: 100%;
+    }
+
+    .vitrine-wrapper {
+      position: fixed;
+      top: var(--header-height, 80px);
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+
+    .vitrine-wrapper iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="header scrolled" id="header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo-link" aria-label="Furinho Chic — início">
+        <img src="images/logo.png" alt="Logo Furinho Chic" class="header-logo">
+      </a>
+
+      <nav class="desktop-nav" aria-label="Navegação principal">
+        <ul>
+          <li><a href="index.html#inicio">Início</a></li>
+          <li><a href="index.html#sobre">Nossa história</a></li>
+          <li><a href="index.html#servicos">Serviços</a></li>
+          <li><a href="index.html#galeria">Galeria</a></li>
+          <li><a href="index.html#depoimentos">Depoimentos</a></li>
+          <li><a href="index.html#contato">Contato</a></li>
+          <li><a href="vitrine.html" class="ativo">Vitrine</a></li>
+        </ul>
+      </nav>
+
+      <a href="https://wa.me/5519994886318" class="btn-header-wpp" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-whatsapp" aria-hidden="true"></i> Agendar
+      </a>
+
+      <button class="hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ===== MENU MOBILE ===== -->
+  <nav class="mobile-nav" id="mobileNav" aria-label="Menu mobile" aria-hidden="true">
+    <ul>
+      <li><a href="index.html#inicio">Início</a></li>
+      <li><a href="index.html#sobre">Nossa história</a></li>
+      <li><a href="index.html#servicos">Serviços</a></li>
+      <li><a href="index.html#galeria">Galeria</a></li>
+      <li><a href="index.html#depoimentos">Depoimentos</a></li>
+      <li><a href="index.html#contato">Contato</a></li>
+      <li><a href="vitrine.html">Vitrine</a></li>
+    </ul>
+  </nav>
+  <div class="overlay" id="overlay" aria-hidden="true"></div>
+
+  <!-- ===== VITRINE IFRAME ===== -->
+  <div class="vitrine-wrapper">
+    <iframe
+      src="https://furinhosdeluxo.egestor.com.br/vitrine/"
+      title="Vitrine Online Furinho Chic"
+      allowfullscreen
+    ></iframe>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
