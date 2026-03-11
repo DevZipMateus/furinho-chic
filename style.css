@@ -1149,3 +1149,123 @@ ul { list-style: none; }
   .depoimento-card { padding: 24px 18px; }
   .mvv-card { padding: 18px 14px; }
 }
+
+
+/* ================================================
+   EFEITOS VISUAIS
+   ================================================ */
+
+/* 1 ── Hero logo flutuante */
+@keyframes logoFloat {
+  0%, 100% { transform: translateY(0);     }
+  50%       { transform: translateY(-10px); }
+}
+.hero-logo { animation: logoFloat 5s ease-in-out infinite; }
+
+/* 2 ── Diamantes do hero pulsam suavemente */
+@keyframes diamondPulse {
+  0%, 100% { transform: scale(1);    opacity: 0.7; }
+  50%       { transform: scale(1.6); opacity: 1;   }
+}
+.hero-ornamento i { animation: diamondPulse 2.8s ease-in-out infinite; }
+.faixa-inner i    { animation: diamondPulse 3.2s ease-in-out infinite; display: inline-block; }
+
+/* 3 ── Botão ouro — varredura de brilho no hover */
+.btn-ouro::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -80%;
+  width: 55%;
+  height: 100%;
+  background: linear-gradient(120deg,
+    transparent 0%,
+    rgba(255,255,255,0.32) 50%,
+    transparent 100%);
+  transform: skewX(-20deg);
+  pointer-events: none;
+}
+.btn-ouro:hover::after { animation: btnShine 0.5s ease forwards; }
+@keyframes btnShine { to { left: 135%; } }
+
+/* 4 ── Galeria — overlay dourado suave no hover */
+.galeria-item::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg,
+    rgba(196,151,59,0.22) 0%,
+    rgba(196,151,59,0)    65%);
+  border-radius: var(--radius);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+.galeria-item:hover::after { opacity: 1; }
+
+/* 5 ── Section h2 — sublinhado dourado animado */
+.section-header h2 { position: relative; }
+.section-header h2::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 1.5px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    var(--ouro-escuro) 30%,
+    var(--ouro-claro)  70%,
+    transparent 100%);
+  transition: width 1s ease 0.1s;
+}
+.section-header h2.h2-line::after { width: 72%; }
+
+/* 6 ── WhatsApp float — anel de pulso */
+@keyframes wppRing {
+  0%   { box-shadow: 0 4px 16px rgba(37,211,102,0.4), 0 0 0 0    rgba(37,211,102,0.5); }
+  70%  { box-shadow: 0 4px 16px rgba(37,211,102,0.4), 0 0 0 14px rgba(37,211,102,0);   }
+  100% { box-shadow: 0 4px 16px rgba(37,211,102,0.4), 0 0 0 0    rgba(37,211,102,0);   }
+}
+.whatsapp-float { animation: wppRing 2.5s ease-out infinite; }
+
+/* 7 ── Cursor sparkle (criado via JS) */
+.sparkle-dot {
+  position: fixed;
+  pointer-events: none;
+  z-index: 99999;
+  border-radius: 50%;
+  background: var(--ouro);
+  transform: translate(-50%, -50%) scale(1);
+  animation: sparkleFade 0.65s ease-out forwards;
+}
+@keyframes sparkleFade {
+  0%   { opacity: 0.85; transform: translate(-50%, -50%) scale(1);   }
+  100% { opacity: 0;    transform: translate(-50%, -85%) scale(0.1); }
+}
+
+/* 8 ── Cards de serviço — entrada com brilho lateral */
+.servico-card { overflow: hidden; }
+.servico-card::after {
+  content: '';
+  position: absolute;
+  top: -60%; left: -60%;
+  width: 40%; height: 220%;
+  background: linear-gradient(115deg,
+    transparent 0%,
+    rgba(196,151,59,0.12) 50%,
+    transparent 100%);
+  transform: skewX(-15deg) translateX(-100%);
+  transition: none;
+  pointer-events: none;
+}
+.servico-card:hover::after {
+  animation: cardShine 0.65s ease forwards;
+}
+@keyframes cardShine { to { transform: skewX(-15deg) translateX(500%); } }
+
+/* desativa animações em mobile (preferência de sistema) */
+@media (prefers-reduced-motion: reduce) {
+  .hero-logo, .hero-ornamento i, .faixa-inner i,
+  .whatsapp-float { animation: none; }
+}

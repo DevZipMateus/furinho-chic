@@ -247,3 +247,55 @@ document.querySelectorAll('.galeria-item:not(.placeholder)').forEach(item => {
     });
   });
 });
+
+
+/* ================================================
+   EFEITOS VISUAIS
+   ================================================ */
+
+// ── Cursor sparkle trail (desktop only) ─────────
+if (!('ontouchstart' in window)) {
+  let sparkleThrottle = false;
+  document.addEventListener('mousemove', function (e) {
+    if (sparkleThrottle) return;
+    sparkleThrottle = true;
+    setTimeout(() => { sparkleThrottle = false; }, 55);
+    const dot  = document.createElement('span');
+    const size = Math.random() * 5 + 3;
+    dot.className = 'sparkle-dot';
+    dot.style.cssText = `width:${size}px;height:${size}px;left:${e.clientX}px;top:${e.clientY}px;`;
+    document.body.appendChild(dot);
+    setTimeout(() => dot.remove(), 700);
+  });
+}
+
+// ── Hero parallax suave ──────────────────────────
+const heroContent = document.querySelector('.hero-content');
+const heroSec     = document.getElementById('inicio');
+if (heroContent && heroSec) {
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    const h = heroSec.offsetHeight;
+    if (y <= h) {
+      heroContent.style.transform = `translateY(${y * 0.2}px)`;
+      heroContent.style.opacity   = String(1 - (y / h * 1.15));
+    }
+  }, { passive: true });
+}
+
+// ── Stagger delay nos cards ──────────────────────
+document.querySelectorAll('.servico-card').forEach((el, i) => { el.style.transitionDelay = `${i * 85}ms`;  });
+document.querySelectorAll('.galeria-item').forEach((el, i) => { el.style.transitionDelay = `${i * 65}ms`;  });
+document.querySelectorAll('.mvv-card').forEach(    (el, i) => { el.style.transitionDelay = `${i * 110}ms`; });
+document.querySelectorAll('.badge-valor').forEach( (el, i) => { el.style.transitionDelay = `${i * 60}ms`;  });
+
+// ── Sublinhado dourado no h2 ao entrar na tela ───
+const h2LineObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('h2-line');
+      h2LineObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.55 });
+document.querySelectorAll('.section-header h2').forEach(h => h2LineObserver.observe(h));
