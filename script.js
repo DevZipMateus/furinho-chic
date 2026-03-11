@@ -149,7 +149,55 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 
-// ── 9. GALERIA — LIGHTBOX SIMPLES ───────────────
+// ── 9. CARROSSEL DE DEPOIMENTOS ─────────────────
+(function () {
+  const carrossel = document.getElementById('depoCarrossel');
+  if (!carrossel) return;
+
+  const track    = carrossel.querySelector('.depo-track');
+  const viewport = carrossel.querySelector('.depo-viewport');
+  const slides   = carrossel.querySelectorAll('.depo-slide');
+  const dots     = carrossel.querySelectorAll('.depo-dot');
+  const btnPrev  = carrossel.querySelector('.depo-prev');
+  const btnNext  = carrossel.querySelector('.depo-next');
+  const total    = slides.length;
+  let current    = 0;
+  let autoTimer;
+
+  function goTo(index) {
+    current = ((index % total) + total) % total;
+    track.style.transform = `translateX(-${current * 100}%)`;
+    dots.forEach((d, i) => d.classList.toggle('active', i === current));
+  }
+
+  function startAuto() {
+    clearInterval(autoTimer);
+    autoTimer = setInterval(() => goTo(current + 1), 5000);
+  }
+
+  btnPrev.addEventListener('click', () => { goTo(current - 1); startAuto(); });
+  btnNext.addEventListener('click', () => { goTo(current + 1); startAuto(); });
+  dots.forEach((dot, i) => dot.addEventListener('click', () => { goTo(i); startAuto(); }));
+
+  // Suporte a swipe / touch
+  let touchX = 0;
+  viewport.addEventListener('touchstart', e => {
+    touchX = e.changedTouches[0].clientX;
+  }, { passive: true });
+  viewport.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - touchX;
+    if (Math.abs(dx) > 40) { dx < 0 ? goTo(current + 1) : goTo(current - 1); startAuto(); }
+  }, { passive: true });
+
+  // Pausa ao passar o mouse
+  carrossel.addEventListener('mouseenter', () => clearInterval(autoTimer));
+  carrossel.addEventListener('mouseleave', startAuto);
+
+  startAuto();
+})();
+
+
+// ── 10. GALERIA — LIGHTBOX SIMPLES ──────────────
 document.querySelectorAll('.galeria-item:not(.placeholder)').forEach(item => {
   item.style.cursor = 'zoom-in';
   item.addEventListener('click', () => {
