@@ -1106,7 +1106,7 @@ ul { list-style: none; }
   .footer-logo { height: 52px; }
   .whatsapp-float { bottom: 20px; right: 20px; width: 50px; height: 50px; font-size: 1.45rem; }
   /* Vitrine: aumenta altura para o conteúdo caber sem scroll interno */
-  .vitrine-iframe-wrapper iframe { height: 2200px; }
+  .vitrine-iframe-wrapper iframe { height: 1700px; }
 }
 
 /* ── Celular grande ≤ 600px ── */
@@ -1137,7 +1137,7 @@ ul { list-style: none; }
   .contato-card { padding: 28px 20px; }
   .footer-logo { height: 46px; }
   .whatsapp-float { bottom: 16px; right: 16px; width: 46px; height: 46px; font-size: 1.3rem; }
-  .vitrine-iframe-wrapper iframe { height: 2800px; }
+  .vitrine-iframe-wrapper iframe { height: 2000px; }
 }
 
 /* ── Celular pequeno ≤ 380px ── */
@@ -1152,7 +1152,7 @@ ul { list-style: none; }
   .servico-icon i { font-size: 1.1rem; }
   .depoimento-card { padding: 24px 18px; }
   .mvv-card { padding: 18px 14px; }
-  .vitrine-iframe-wrapper iframe { height: 3200px; }
+  .vitrine-iframe-wrapper iframe { height: 2200px; }
 }
 
 
